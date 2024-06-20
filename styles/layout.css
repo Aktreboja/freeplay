@@ -2,3 +2,37 @@ html, body {
     padding: 0;
     margin: 0;
 }
+
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Component layout styles */
+
+.gameGrid {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+    row-gap: 20px;
+    margin: 0 auto;
+}

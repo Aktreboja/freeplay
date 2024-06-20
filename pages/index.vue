@@ -14,10 +14,10 @@ const description = ref("This web application is focused on finding your next fr
         </nav>
         <h1>Free Games web application</h1>
         <p>{{ description }}</p>
-        <NuxtLink to= "/games">Games</NuxtLink>
-        <!-- <TypographyHeader />
-        <TypographyBody text = "TEST" classes = "text-body"/> -->
-        <TypographyHeader/>
+        <NuxtLink to= "/games/mmoprg">MMORPGs</NuxtLink>
+        <TypographyHeader />
+        <TypographyBody text = "TEST" classes = "text-body"/>
+        <TypographyHeader />
     </main>
   </template>
   
