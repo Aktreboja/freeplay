@@ -1,0 +1,20 @@
+# Querying Typing
+type Query {
+  games: [Game!]!
+  gamesByCategory(category: String!): [Game!]!
+}
+
+# Game Typing
+type Game {
+  id: Int
+  title: String
+  thumbnail: String
+  short_description: String
+  game_url: String
+  genre: String
+  platform: String
+  publisher: String
+  developer: String
+  release_date: String
+  freetogame_profile_url: String
+}
