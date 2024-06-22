@@ -1,0 +1,42 @@
+.text-title {
+  font-weight: 600;
+  letter-spacing: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-base {
+  font-weight: 400;
+}
+
+.text-sm {
+  font-size: 17px;
+}
+
+/* Mobile */
+@media only screen and (min-width: 321px) {
+  .text-title {
+    font-size: 50px;
+    text-align: center;
+    line-height: 4rem;
+  }
+
+  .text-base {
+    font-size: 1.6em;
+    line-height: 2.2rem;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+}
+
+@media only screen and (min-width: 769px) {
+}
+
+@media only screen and (min-width: 1025px) {
+}
+
+@media only screen and (min-width: 1201px) {
+}
+
+@media only screen and (min-width: 1601px) {
+}
