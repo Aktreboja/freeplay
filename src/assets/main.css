@@ -1,4 +1,28 @@
 @import './base.css';
+@import './layout.css';
+@import './components.css';
+@import 'primeicons/primeicons.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-weight: normal;
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #3f5e5a;
+  }
+}
+
+/* 
 
 #app {
   max-width: 1280px;
@@ -32,4 +56,4 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
-}
+} */

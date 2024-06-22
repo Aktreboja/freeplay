@@ -1,0 +1,24 @@
+.Card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+  }
+}
+
+
+/* Card Component Overrides */
+.p-card {
+  background-color: red;
+  padding: 16px 10px;
+  min-height: 400px;
+}
+
+
+
+

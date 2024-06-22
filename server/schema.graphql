@@ -2,6 +2,7 @@
 type Query {
   games: [Game!]!
   gamesByCategory(category: String!): [Game!]!
+  gamesByPlatform(platform: String!): [Game!]!
 }
 
 # Game Typing

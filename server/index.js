@@ -44,6 +44,16 @@ const root = {
       console.error(`Unable to fetch by category: `, error)
       return []
     }
+  },
+  async gamesByPlatform({ platform }) {
+    const url = process.env.API_BASE
+    try {
+      const response = await fetch(`${url}/games?platform=${platform}`)
+      return await response.json()
+    } catch (error) {
+      console.error(`Unable to get games played on ${platform}: `, error)
+      return []
+    }
   }
 }
 
