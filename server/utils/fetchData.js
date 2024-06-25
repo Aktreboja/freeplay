@@ -1,6 +1,10 @@
+/**
+ * Middleware function that serves as a utility for API requests
+ * @param { String } endpoint the endpoint to be called 
+ * @param { Object } queryParams The query Parameters of the request
+ * @returns 
+ */
 const fetchData = async(endpoint, queryParams = {}) => {
-    console.log(queryParams)
-    
     const url = new URL(`${process.env.API_BASE}${endpoint}`)
     Object.keys(queryParams)
         .forEach((param) => { 
@@ -9,8 +13,6 @@ const fetchData = async(endpoint, queryParams = {}) => {
                     else url.searchParams.append(param, queryParams[param])
                 }
             })
-
-    console.log(url)
     try {
         const response = await fetch(url)
         if (!response.ok) {
@@ -22,6 +24,4 @@ const fetchData = async(endpoint, queryParams = {}) => {
         return []
     } 
 }
-
-
 module.exports = fetchData

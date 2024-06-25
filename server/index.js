@@ -29,7 +29,13 @@ const limiter = rateLimit({
   max: 100
 })
 
-app.use(cors())
+// Setup CORS
+const corsOptions = {
+  origin: process.env.BASE_URL || 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(helmet({
   contentSecurityPolicy: {
     directives : {
@@ -106,7 +112,4 @@ app.post('/graphql',
 )
 
 const port = process.env.PORT || 3000
-
-app.listen(port, () => {
-  console.log(`Backend server hosted on ${port}`)
-})
+app.listen(port)
