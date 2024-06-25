@@ -1,5 +1,6 @@
 import './assets/main.css'
 
+
 import { createApp, provide, h } from 'vue'
 
 import router from './router'
@@ -14,8 +15,10 @@ import { DefaultApolloClient } from '@vue/apollo-composable'
 // Apollo Client setup
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client/core'
 
+// 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3000/graphql'
+  // @ts-ignore
+  uri: import.meta.env.VITE_APOLLO_CLIENT_URL || 'http://localhost:3000/graphql'
 })
 
 const cache = new InMemoryCache()
