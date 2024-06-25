@@ -1,8 +1,11 @@
 # Querying Typing
 type Query {
+  game(id: Int!): GameMetadata!
   games: [Game!]!
   gamesByCategory(category: String!): [Game!]!
   gamesByPlatform(platform: String!): [Game!]!
+  gamesByFilters(platform: String, category: String, sortBy: String): [Game!]!
+  gamesByPersonalizedTags(platform: String, sortBy: String, tag: String): [Game!]!
 }
 
 # Game Typing
@@ -18,4 +21,36 @@ type Game {
   developer: String
   release_date: String
   freetogame_profile_url: String
+}
+
+
+type GameMetadata {
+  id: Int
+  title: String
+  thumbnail: String
+  status: String
+  short_description: String
+  description: String
+  game_url: String
+  genre: String
+  platform: String
+  publisher: String
+  developer: String
+  release_date: String
+  freetogame_profile_url: String
+  minimum_system_requirements: MinimumSystemRequirements
+  screenshots: [Screenshot]
+}
+
+type MinimumSystemRequirements {
+  os: String
+  processor: String
+  memory: String
+  graphics: String
+  storage: String
+}
+
+type Screenshot {
+  id: Int
+  image: String
 }
