@@ -1,61 +1,248 @@
-# .
+<a name="readme-top"></a>
 
-This template should help get you started developing with Vue 3 in Vite.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<!--   <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a> -->
 
-## Recommended IDE Setup
+  <h1 align="center"><i>Free Games Web application</i></h1>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+<!-- TABLE OF CONTENTS -->
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
 
-## Type Support for `.vue` Imports in TS
+<!-- ABOUT THE PROJECT -->
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## About The Project
 
-## Customize configuration
+This project focuses on using a Vue.js frontent with a Express backend with GraphQL queries to fetch data from FreeToGame API
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Current features include: 
 
-## Project Setup
+1. Viewing Free games based on platform, genre, etc
+2. GraphQL queries for data fetching
+3. Responsive frontend with pagination and loading states
 
-```sh
-npm install
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h3 name = "built-with"> Built With</h3>
+
+[![Vue][Vue.js]][Vue-url]
+[![Tailwind][Tailwind]][Tailwind-url]
+[![TypeScript][TypeScript]][TypeScript-url]
+[![Express][Express]][Express-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Getting Started
+
+For this project, we will have the frontend and backend hosted separately. We will talk about how to setup both instances below
+
+### Frontend Setup and Installation
+
+To Get started with the frontend
+### 1. Create a vue application
+   ```sh
+    cd './your_project_path.here'
+    npm create vue@latest
+   ```
+   
+   Vue will ask questions regarding your setup, make sure to say Yes on the following:
+   
+   1. Adding Vue Router
+   2. ESLINT (For linting and checking)
+   3. Prettier (to format your code as you work throughout the project)
+  
+    Once Vue-create has finished setting up your project, navigate to the directory of your new project and run the following:
+
+    ```sh
+        npm install 
+        npm run dev
+    ```
+
+
+### 2. Install the following project dependencies
+For this project, you will need to install the following packages
+
+    ```sh
+        npm install --save @apollo/client @vue/apollo-composable graphql-tag @primevue/themes
+    ```
+
+### Packages
+   
+#### GraphQL
+ 
+1. @apollo/client
+2. @vue/apollo-composable 
+3. graphql-tag
+    
+##### Frontend Theming
+    
+1. @primevue/themes
+    
+### 3. Add in environment variables
+   ```env
+   // This will be the url from the backend, which we will setup later. 
+    VITE_APOLLO_CLIENT_URL = "Apollo client url here"
+   ```
+
+### 4. Setting up the main.js/ts file
+
+#### Vue-Router setup (if using)
+
+```js
+    import { createRouter, createWebHistory } from 'vue-router'
+    import type { RouteRecordRaw } from 'vue-router'
+    
+    // component pages
+    import Landing from '@/pages/Landing.vue'
+    import Games from '@/pages/Games.vue'
+    import PlatformGames from '@/pages/PlatformGames.vue'
+    import Game from '@/pages/Game.vue'
+    
+    // Initializing the routes directly
+    const routes: Array<RouteRecordRaw> = [
+      { path: '/', name: 'landing', component: Landing },
+      // { path: '/games/:category', name: 'games', component: Games },
+      { path: '/games/platform/:platform', name: 'platform', component: PlatformGames },
+      { path: '/game/:gameId', name: 'game', component: Game },
+      { path: '/games', name: 'games', component: Games }
+    ]
+
+    const router = createRouter({
+      history: createWebHistory(),
+      routes
+    })
+
+    export default router
 ```
 
-### Compile and Hot-Reload for Development
+### App.vue Entry file
 
-```sh
-npm run dev
+```html
+<template>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <main>
+    <!-- THIS HAS TO BE WITHIN A PAGE IN ORDER FOR VUE-ROUTER TO WORK! -->
+    <RouterView />
+  </main>
+</template>
 ```
 
-### Type-Check, Compile and Minify for Production
+#### Base Setup (Vue) with Apollo GraphQL client
 
-```sh
-npm run build
+```js
+    // Importing App.vue
+    import App from './App.vue'
+    
+      // Apollo Client setup
+    import { DefaultApolloClient } from '@vue/apollo-composable'
+    import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client/core'
+    
+    const httpLink = createHttpLink({
+      uri: import.meta.env.VITE_APOLLO_CLIENT_URL || 'http://localhost:3000/graphql'
+    })
+
+    const cache = new InMemoryCache()
+    
+    const apolloClient = new ApolloClient({
+      link: httpLink,
+      cache
+    })
+    
+    const app = createApp({
+        // Apollo client setup
+        setup() {
+            provide(DefaultApolloClient, apolloClient)
+      },
+      render: () => h(App)
+    })
+    
+    app.mount('#app')
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+### Backend Setup and Installation
+
+To get started with the backend
+
+### 1. Create a server directory
+
+At the root directory of the project, create the server directory:
 
 ```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
+    mkdir server
+    cd server
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+### 2. Create the express app
+
+Create a package.json file and download the dependencies needed
 
 ```sh
-npm run test:e2e:dev
+    npm init -y
+    
+    // Install dependencies
+    npm install --save express dotenv graphql graphql-http ruru cors 
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+### 3. Create the index.js file
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+The most basic version of the app includes
 
-```sh
-npm run build
-npm run test:e2e
+```js
+    const express = require('express')
+    
+    const app = express()
+
+    const port = process.env.PORT || 3000
+    
+    app.listen(port)
 ```
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
+## Roadmap
+
+- [ ] Update UI, while adding in Dark mode functionality
+- [ ] Write E2E tests in Cypress
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+Aldrich Reboja - aktreboja@gmail.com
+
+Project Link: [https://github.com/aktreboja/Nightowl](https://github.com/aktreboja/Nightowl)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/aktreboja
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=whi
+[TypeScript-url]: https://www.typescriptlang.org/
+[Tailwind]: https://img.shields.io/badge/tailwindcss-0F172A?style=for-the-badge&logo=tailwindcss
+[Tailwind-url]: https://tailwindcss.com/
+[Express]: https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
