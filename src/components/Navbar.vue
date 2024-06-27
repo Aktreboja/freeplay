@@ -13,7 +13,11 @@ const items = ref([
     route: '/'
   },
   {
-    label: 'Free Games',
+    label: 'All Games',
+    route: '/games'
+  },
+  {
+    label: 'Browse Free Games',
     items: [
       {
         label: 'MOBA',
@@ -69,15 +73,19 @@ const items = ref([
 </script>
 
 <template>
-  <Menubar :model="items">
+  <Menubar :model="items" style="padding: 10px 1em">
     <template #item="{ item, props, hasSubmenu }">
       <RouterLink v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-        <a v-ripple :href="href" v-bind="props.action" @click="navigate">
-          <p>{{ item.label }}</p>
-        </a>
+        <div style="display: flex; align-items: center">
+          <span :class="item.icon" />
+          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <p>{{ item.label }}</p>
+          </a>
+        </div>
       </RouterLink>
       <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
         <span class="ml-2">{{ item.label }}</span>
+        <span class="pi pi-angle-down" />
       </a>
     </template>
   </Menubar>

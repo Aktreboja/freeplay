@@ -12,14 +12,28 @@
   -webkit-box-orient: vertical;
 }
 
+.Card-genre {
+  border: 1px solid green;
+  width: fit-content;
+  padding: 3px 10px;
+  margin: 10px 0px 5px 0px;
+  border-radius: 0.24rem;
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
 .Card-footer {
   flex-grow: 5;
   height: 100%;
   display: flex;
   margin-top: 10px;
-
 }
 
+.Card-footer div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 @media (prefers-color-scheme: light) {
   body {
@@ -29,7 +43,6 @@
 
 /* Card Component Overrides */
 .p-card {
-  background-color: red;
   padding: 16px 10px;
   min-height: 400px;
 }

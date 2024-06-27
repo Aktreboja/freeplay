@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import Button from 'primevue/button'
 import Navbar from '@/components/Navbar.vue'
 
@@ -12,12 +12,13 @@ const goToGames = (category: string) => {
 const goToPlatform = (platform: string) => {
   router.push(`/games/platform/${platform}`)
 }
+
+document.title = 'Free Games Demo | Welcome'
 </script>
 
 <template>
-  <main style="border: 1px solid black">
-    <Navbar />
-    <section class="section" style="height: 100vh">
+  <section>
+    <main class="section" style="height: 100vh">
       <h1 class="text-title primary-title">Free Games Demo</h1>
       <p class="text-base primary-base" style="width: 80%; margin: 16px 0px">
         A web application focused on providing you with Free games to play, for whenever you get
@@ -41,6 +42,6 @@ const goToPlatform = (platform: string) => {
           label="Browse PC Games"
         />
       </div>
-    </section>
-  </main>
+    </main>
+  </section>
 </template>
