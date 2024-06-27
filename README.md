@@ -1,27 +1,9 @@
-<a name="readme-top"></a>
-
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-<!--   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
-
-  <h1 align="center"><i>Free Games Web application</i></h1>
-
-<!-- TABLE OF CONTENTS -->
-  <h3>Table of Contents</h3>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#installation">Installation</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-
+<h1 align="center"><i>Free Games Web application</i></h1>
 <!-- ABOUT THE PROJECT -->
 
+<span id="about-the-project"></span>
 ## About The Project
 
 This project focuses on using a Vue.js frontent with a Express backend with GraphQL queries to fetch data from FreeToGame API
@@ -32,8 +14,6 @@ Current features include:
 2. GraphQL queries for data fetching
 3. Responsive frontend with pagination and loading states
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <h3 name = "built-with"> Built With</h3>
 
 [![Vue][Vue.js]][Vue-url]
@@ -41,7 +21,7 @@ Current features include:
 [![TypeScript][TypeScript]][TypeScript-url]
 [![Express][Express]][Express-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Getting Started
 
@@ -173,9 +153,6 @@ For this project, you will need to install the following packages
     app.mount('#app')
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 ### Backend Setup and Installation
 
 To get started with the backend
@@ -221,8 +198,6 @@ The most basic version of the app includes
 - [ ] Write E2E tests in Cypress
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTACT -->
 
 ## Contact
@@ -230,8 +205,6 @@ The most basic version of the app includes
 Aldrich Reboja - aktreboja@gmail.com
 
 Project Link: [https://github.com/aktreboja/Nightowl](https://github.com/aktreboja/Nightowl)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
