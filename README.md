@@ -6,7 +6,7 @@
 <span id="about-the-project"></span>
 ## About The Project
 
-This project focuses on using a Vue.js frontent with a Express backend with GraphQL queries to fetch data from FreeToGame API
+This project focuses on using a Vue.js frontend with a Express backend with GraphQL queries to fetch data from FreeToGame API
 
 Current features include: 
 
@@ -20,7 +20,6 @@ Current features include:
 [![Tailwind][Tailwind]][Tailwind-url]
 [![TypeScript][TypeScript]][TypeScript-url]
 [![Express][Express]][Express-url]
-
 
 
 ## Getting Started
@@ -197,17 +196,11 @@ The most basic version of the app includes
 - [ ] Update UI, while adding in Dark mode functionality
 - [ ] Write E2E tests in Cypress
 
-
 <!-- CONTACT -->
 
 ## Contact
 
 Aldrich Reboja - aktreboja@gmail.com
-
-Project Link: [https://github.com/aktreboja/Nightowl](https://github.com/aktreboja/Nightowl)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/aktreboja
